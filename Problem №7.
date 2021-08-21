@@ -1,0 +1,58 @@
+// Example 7
+
+using System;
+
+class Demo
+{
+    private char symbol;
+    private string text;
+
+    public void set(char s)
+    {
+        symbol = s;
+    }
+    public void set(string s)
+    {
+        text = s;
+    }
+    public void set(char[] args)
+    {
+        if (args.Length == 1) symbol = args[0];
+        else
+        {
+            string s = "";
+            for (int i = 0; i < args.Length; i++)
+            {
+                s += args[i];
+            }
+
+            text = s;
+        }
+    }
+    public void show()
+    {
+        Console.WriteLine($"Символьное поле - {symbol}.");
+        Console.WriteLine($"Текстовое поле - {text}.");
+    }
+}
+
+class Lead
+{
+    static void Main()
+    {
+        Demo obj = new Demo();
+        obj.set('A');
+        obj.show();
+
+        obj.set("hello");
+        obj.show();
+
+        char[] symbols = { 'B' };
+        obj.set(symbols);
+        obj.show();
+
+        char[] new_symbols = { 'D', 'A', 'Y'};
+        obj.set(new_symbols);
+        obj.show();
+    }
+}
